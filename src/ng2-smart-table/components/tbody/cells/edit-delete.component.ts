@@ -12,6 +12,8 @@ import { DataSource } from '../../../lib/data-source/data-source';
         [innerHTML]="editRowButtonContent" (click)="onEdit($event)"></a>
     <a href="#" *ngIf="isActionDelete" class="ng2-smart-action ng2-smart-action-delete-delete"
         [innerHTML]="deleteRowButtonContent" (click)="onDelete($event)"></a>
+    <a href="#" *ngIf="isActionDownload" class="ng2-smart-action ng2-smart-action-download-download"
+        [innerHTML]="downloadRowButtonContent" (click)="onDownload($event)"></a>
   `,
 })
 export class TbodyEditDeleteComponent implements OnChanges {
@@ -20,16 +22,18 @@ export class TbodyEditDeleteComponent implements OnChanges {
   @Input() row: Row;
   @Input() source: DataSource;
   @Input() deleteConfirm: EventEmitter<any>;
-  @Input() editConfirm: EventEmitter<any>;
 
   @Output() edit = new EventEmitter<any>();
   @Output() delete = new EventEmitter<any>();
+  @Output() download = new EventEmitter<any>();
   @Output() editRowSelect = new EventEmitter<any>();
 
   isActionEdit: boolean;
   isActionDelete: boolean;
+  isActionDownload: boolean;
   editRowButtonContent: string;
   deleteRowButtonContent: string;
+  downloadRowButtonContent: string;
 
   onEdit(event: any) {
     event.preventDefault();
@@ -61,10 +65,21 @@ export class TbodyEditDeleteComponent implements OnChanges {
     }
   }
 
+  onDownload(event: any) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.download.emit({
+      data: this.row.getData(),
+      source: this.source,
+    });
+  }
+
   ngOnChanges(){
     this.isActionEdit = this.grid.getSetting('actions.edit');
     this.isActionDelete = this.grid.getSetting('actions.delete');
+    this.isActionDownload = this.grid.getSetting('actions.download');
     this.editRowButtonContent = this.grid.getSetting('edit.editButtonContent');
     this.deleteRowButtonContent = this.grid.getSetting('delete.deleteButtonContent');
+    this.downloadRowButtonContent = this.grid.getSetting('download.downloadButtonContent');
   }
 }

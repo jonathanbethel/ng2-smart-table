@@ -1,14 +1,14 @@
 {
   "name": "ng2-smart-table-demo",
   "description": "Angular Smart Table",
-  "author": "Akveo <contact@akveo.com>",
+  "author": "JonathanBethel <jonathan.bethel@cinnober.com>",
   "homepage": "http://akveo.github.io/ng2-smart-table/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/akveo/ng2-smart-table.git"
+    "url": "https://github.com/jonathanbethel/ng2-smart-table.git"
   },
   "bugs": {
-    "url": "https://github.com/akveo/ng2-smart-table/issues"
+    "url": "https://github.com/jonathanbethel/ng2-smart-table/issues"
   },
   "license": "MIT",
   "scripts": {

@@ -22,6 +22,7 @@ export class Ng2SmartTableTbodyComponent {
   @Output() cancel = new EventEmitter<any>();
   @Output() edit = new EventEmitter<any>();
   @Output() delete = new EventEmitter<any>();
+  @Output() download = new EventEmitter<any>();
   @Output() custom = new EventEmitter<any>();
   @Output() edited = new EventEmitter<any>();
   @Output() userSelectRow = new EventEmitter<any>();
@@ -37,6 +38,7 @@ export class Ng2SmartTableTbodyComponent {
   isActionAdd: boolean;
   isActionEdit: boolean;
   isActionDelete: boolean;
+  isActionDownload: boolean;
   noDataMessage: boolean;
 
   ngOnChanges() {
@@ -48,6 +50,7 @@ export class Ng2SmartTableTbodyComponent {
     this.isActionAdd = this.grid.getSetting('actions.add');
     this.isActionEdit = this.grid.getSetting('actions.edit');
     this.isActionDelete = this.grid.getSetting('actions.delete');
+    this.isActionDownload = this.grid.getSetting('actions.download');
     this.noDataMessage = this.grid.getSetting('noDataMessage');
   }
 }
