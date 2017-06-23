@@ -10,6 +10,7 @@
                               [editConfirm]="editConfirm"
                               (edit)="edit.emit(row)"
                               (delete)="delete.emit(row)"
+                              (download)="download.emit(row)"
                               (editRowSelect)="editRowSelect.emit($event)"
                               [row]="row"
                               [source]="source">
@@ -44,13 +45,14 @@
                               [source]="source"
                               (edit)="edit.emit(row)"
                               (delete)="delete.emit(row)"
+                              (download)="download.emit(row)"
                               (editRowSelect)="editRowSelect.emit($event)">
     </ng2-st-tbody-edit-delete>
   </td>
 </tr>
 
 <tr *ngIf="grid.getRows().length == 0">
-  <td [attr.colspan]="grid.getColumns().length + (isActionAdd || isActionEdit || isActionDelete)">
+  <td [attr.colspan]="grid.getColumns().length + (isActionAdd || isActionEdit || isActionDelete || isActionDownload)">
     {{ noDataMessage }}
   </td>
 </tr>
